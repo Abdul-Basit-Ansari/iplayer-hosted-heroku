@@ -25,10 +25,9 @@ def vplayer(request):
 			print(search)
 			user = request.user
 			v= Mvideo.objects.filter( Q(title__icontains=search) | Q(name__icontains=search)& Q(ondelete=False)&Q(onhide=False))
-			dic={'videos':v}	
-			# print("GET")
+				
 		
-			return render(request,'vplayer/index.html',dic)
+			return render(request,'vplayer/index.html',{'videos':v})
 	videos = Mvideo.objects.filter(onhide=False,ondelete = False).order_by('-date')
 	if u.is_authenticated:
 		vform=Vform(request.POST,request.FILES)
@@ -36,12 +35,10 @@ def vplayer(request):
 		vform.name =u.first_name+" "+u.last_name
 		vform.email =u.email
 		vform.user = request.user
-		dic = {'videos':videos,'form':vform,'user':u}
-		return render(request,"vplayer/index.html",dic)
+		return render(request,"vplayer/index.html",{'videos':videos,'form':vform,'user':u})
 
-	dic = {'videos':videos,'user':u}
-	# print("hgretgfd")
-	return render(request,"vplayer/index.html",dic)
+	
+	return render(request,"vplayer/index.html",{'videos':videos,'user':u})
 def aplayer(request):
 	u = request.user
 	if request.method == "GET":
@@ -55,10 +52,8 @@ def aplayer(request):
 			print(search)
 			user = request.user
 			a= Maudio.objects.filter( Q(title__icontains=search) | Q(name__icontains=search)& Q(ondelete=False)&Q(onhide=False))
-			dic={'audios':a}	
-			# print("GET")
 		
-			return render(request,'aplayer/index.html',dic)
+			return render(request,'aplayer/index.html',{'audios':a})
 	audios = Maudio.objects.filter(onhide=False,ondelete = False)
 	if u.is_authenticated:
 		aform=Aform(request.POST,request.FILES)
@@ -66,11 +61,9 @@ def aplayer(request):
 		aform.name =u.first_name+" "+u.last_name
 		aform.email =u.email
 		aform.user = request.user
-		dic = {'audios':audios,'form':aform,'user':u}
-		return render(request,"aplayer/index.html",dic)
+		return render(request,"aplayer/index.html",{'audios':audios,'form':aform,'user':u})
 
-	dic = {'audios':audios,'user':u}
-	return render(request,"aplayer/index.html",dic)
+	return render(request,"aplayer/index.html",{'audios':audios,'user':u})
 
 
 def signup(request):
@@ -86,7 +79,6 @@ def signup(request):
 			email = request.POST.get('email')
 			pass1 = request.POST.get('pass1')
 			pass2 = request.POST.get('pass2')
-			# print(fname,lname,uname,phone,email,pass1,pass2)
 			if pass1 != pass2 :
 				messages.error(request,"Passwords Is Diffrent")
 			user = 	User.objects.create_user(uname,email,pass1)
@@ -98,9 +90,8 @@ def signup(request):
 			return redirect("index")
 	print("signup")
 
-	dic={'user':u}
 	if not u.is_authenticated:
-		return redirect("index",dic)
+		return redirect("index",{'user':u})
 	if u.is_authenticated:
 		return redirect("index")
 
@@ -115,9 +106,9 @@ def ulogin(request):
 			if user is not None:
 				login(request, user)
 				messages.success(request, "Successfully Logged In")
-				dic={'user':request.user}
+				
 				if not user.is_authenticated:
-					return redirect("index",dic)
+					return redirect("index",{'user':request.user})
 				if user.is_authenticated:
 					return redirect("index")
 
@@ -206,17 +197,16 @@ def uprofile(request):
 			user = request.user
 			v= Mvideo.objects.filter(Q(user=user)& Q(title__icontains=search) & Q(ondelete=False))
 			a= Maudio.objects.filter(Q(user=user)& Q(title__icontains=search) & Q(ondelete=False))
-			dic={'videos':v,'audios':a}	
-			print("GET")
+	
 		
-			return render(request,'vplayer/profile.html',dic)
+			return render(request,'vplayer/profile.html',{'videos':v,'audios':a})
 
 	user=request.user
 	if user.is_authenticated:
 		uvideo=Mvideo.objects.filter(user=user,ondelete=False)
 		uaudio=Maudio.objects.filter(user=user,ondelete=False)
-		dic ={'videos':uvideo,'audios':uaudio,'user':user}
-		return render(request,'vplayer/profile.html',dic)
+
+		return render(request,'vplayer/profile.html',{'videos':uvideo,'audios':uaudio,'user':user})
 	else:
 		return redirect('index')	
 
@@ -270,8 +260,8 @@ def video(request,sno):
 	comments = Vcomment.objects.filter(video=video)
 	otherv=Mvideo.objects.all()
 	
-	dic={'video':video,'otherv':otherv,'comments':comments}
-	return render(request,'vplayer/video.html',dic)	
+
+	return render(request,'vplayer/video.html',{'video':video,'otherv':otherv,'comments':comments})	
 
 
 
