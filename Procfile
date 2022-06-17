@@ -1,1 +1,1 @@
-waitress-serve --port=8000  player.wsgi:application
+waitress-serve --listen=*:8000 player.wsgi:application
