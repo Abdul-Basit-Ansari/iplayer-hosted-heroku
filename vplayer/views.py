@@ -7,11 +7,14 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth  import authenticate,  login, logout
 from .models import Mvideo,Maudio,Vcomment,Acomment
 from django.db.models import Q 
+from django.views.decorators.csrf import csrf_exempt
+
 # Create your views here.
 def index(request):
 
 	return render(request,"index.html")
 
+@csrf_exempt
 def vplayer(request):
 	u = request.user
 	if request.method == "GET":
@@ -39,6 +42,8 @@ def vplayer(request):
 
 	
 	return render(request,"vplayer/index.html",{'videos':videos,'user':u})
+
+@csrf_exempt
 def aplayer(request):
 	u = request.user
 	if request.method == "GET":
@@ -65,7 +70,7 @@ def aplayer(request):
 
 	return render(request,"aplayer/index.html",{'audios':audios,'user':u})
 
-
+@csrf_exempt
 def signup(request):
 	u=request.user
 	if u.is_authenticated:
@@ -95,7 +100,7 @@ def signup(request):
 	if u.is_authenticated:
 		return redirect("index")
 
-
+@csrf_exempt
 def ulogin(request):
 	user = request.user
 	if request.method == "POST":
@@ -122,7 +127,7 @@ def ulogin(request):
 
 			
 		# # login(request,user)
-
+@csrf_exempt
 def ulogout(request):
 	user=request.user
 	if user.is_authenticated:
@@ -130,7 +135,7 @@ def ulogout(request):
 		messages.success(request, "Successly Logout..!")
 	return redirect("index")
 
-
+@csrf_exempt
 def addvideo(request):
 	def form_valid(self, form):
 		form.instance.owner = self.request.user   #<------ This line will do the trick.
@@ -156,7 +161,7 @@ def addvideo(request):
 				messages.error(request,"Please Choose Valid Video.!")
 				return redirect("vplayer")
 
-
+@csrf_exempt
 def addaudio(request):
 	
 	u=request.user
@@ -183,7 +188,7 @@ def addaudio(request):
 		else:
 			messages.error(request,"Some Thing Went Wrong File Is Not Uploaded")
 			return redirect("aplayer")
-
+@csrf_exempt
 def uprofile(request):
 	if request.method == "GET":
 		
@@ -209,21 +214,21 @@ def uprofile(request):
 		return render(request,'vplayer/profile.html',{'videos':uvideo,'audios':uaudio,'user':user})
 	else:
 		return redirect('index')	
-
+@csrf_exempt
 def vdelete(request,sno):
 	u = request.user
 	v = Mvideo.objects.get(sno=sno)
 	v.ondelete = True
 	v.save()
 	return redirect ('uprofile')
-
+@csrf_exempt
 def vhide(request,sno):
 
 	v = Mvideo.objects.get(sno=sno)
 	v.onhide = True
 	v.save()
 	return redirect ('uprofile')
-
+@csrf_exempt
 def vunhide(request,sno):
 
 	v = Mvideo.objects.get(sno=sno)
@@ -231,20 +236,20 @@ def vunhide(request,sno):
 	v.save()
 	return redirect ('uprofile')
 
-
+@csrf_exempt
 def adelete(request,sno):
 	u = request.user
 	a = Maudio.objects.get(sno=sno)
 	a.ondelete = True
 	a.save()
 	return redirect ('uprofile')
-
+@csrf_exempt
 def ahide(request,sno):
 	a = Maudio.objects.get(sno=sno)
 	a.onhide = True
 	a.save()
 	return redirect ('uprofile')
-
+@csrf_exempt
 def aunhide(request,sno):
 	a = Maudio.objects.get(sno=sno)
 	a.onhide = False
@@ -252,7 +257,7 @@ def aunhide(request,sno):
 	return redirect ('uprofile')
 
 
-
+@csrf_exempt
 def video(request,sno):
 	
 		
@@ -264,7 +269,7 @@ def video(request,sno):
 	return render(request,'vplayer/video.html',{'video':video,'otherv':otherv,'comments':comments})	
 
 
-
+@csrf_exempt
 def vcomment(request,sno):
 	u= request.user
 	
