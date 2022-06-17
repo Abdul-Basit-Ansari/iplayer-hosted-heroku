@@ -22,12 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3v51i_&f@mww3es%)0^5m(4y$4d70%gm+pv$thtefba5ij+3di'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["iplayer-youtubeclone.herokuapp.com"]
+ALLOWED_HOSTS = ["iplayer-youtubeclone.herokuapp.com","localhost"]
 
 
 # Application definition
@@ -132,17 +132,26 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+STATIC_URL = '/static/'
 
-STATIC_URL = 'iplayer-youtubeclone.herokuapp.com/static/'
-STATIC_ROOT = 'iplayer-youtubeclone.herokuapp.com/staticfiles'
-STATICFILES_DIRS = (
-                    'iplayer-youtubeclone.herokuapp.com/static',
-                    'iplayer-youtubeclone.herokuapp.com/media',
-                   )
-PROJECT_PATH = os.path.join(BASE_DIR, 'static')
+MEDIA_URL = '/media/'
 
-MEDIA_URL = 'iplayer-youtubeclone.herokuapp.com/media/'
-MEDIA_ROOT = 'iplayer-youtubeclone.herokuapp.com/media' 
+  
+
+if DEBUG:
+
+  STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+else:
+
+  STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+  
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# Default primary key field type
+# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MESSAGE_TAGS ={
