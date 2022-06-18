@@ -456,11 +456,11 @@
                 <span class="mb-2 dateortime d-inline">{{audio.date|date:"M d, Y"}}&nbsp;&nbsp;&nbsp; {% if video.onhide == True %} 🔒 {% else %} 🔓 {% endif %}
                     <div class="btnbox">
 
-                        <a class="btn btn-danger text-dark mybuttons"   href="onvdelete/{{video.sno}}">Delete</a>
+                        <a class="btn btn-danger text-dark mybuttons"   href="onadelete/{{video.sno}}">Delete</a>
                         {% if video.onhide == True %}
-                        <a class="btn btn-success text-dark mybuttons"   href="onvunhide/{{video.sno}}">Make Public</a>
+                        <a class="btn btn-success text-dark mybuttons"   href="onaunhide/{{video.sno}}">Make Public</a>
                         {% else %}
-                        <a class="btn btn-primary text-dark mybuttons"   href="onvhide/{{video.sno}}">Make Private</a>
+                        <a class="btn btn-primary text-dark mybuttons"   href="onahide/{{video.sno}}">Make Private</a>
                         {% endif %}
                     </div></span>
                 </span>

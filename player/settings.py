@@ -12,8 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 from django.contrib import messages
-import django_heroku
-import dj_database_url
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,7 +26,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-ALLOWED_HOSTS = ["iplayer-youtubeclone.herokuapp.com","localhost"]
+ALLOWED_HOSTS = ["iplayer-youtubeclone.herokuapp.com","localhost","127.0.0.1"]
 
 
 # Application definition

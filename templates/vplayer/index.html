@@ -1,6 +1,29 @@
 {% extends 'base.html' %} {% block title %} Video Player {% endblock title %} {% block addvideo %}
+
+<!-- model -->
+<button type="button" class="btn btn-outline-success changeaddvideotext" data-bs-toggle="modal" data-bs-target="#exampleModal1"></button>
+
+<!-- Modal -->
+<div class="modal fade " id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content  p-2 bg-secondary">
+            <div class="modal-header">
+                <h5 class="modal-title " id="exampleModalLabel">Add Video</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <h1 class="my-5 text-center">Add Video</h1>
+            <form method="post" action="addvideo" enctype="multipart/form-data">
+                {% csrf_token %} {{form}}
+
+                <button type="submit" class="btn btn-success border-dark text-dark container my-3 ">Add</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock addvideo %} {% block body %}
+
 <style>
-    @media screen and (min-width:500px) {
+    /* @media screen and (min-width:500px) {
         .changeaddvideotext::after {
             content: "Add Video";
         }
@@ -17,8 +40,12 @@
             content: "Add";
         }
     }
+     */
     
     @media screen and (min-width:900px) {
+        .changeaddvideotext::after {
+            content: "Add Video";
+        }
         .mycardstyle {
             height: 15vw;
             width: 22.5vw;
@@ -45,6 +72,9 @@
     }
     
     @media (max-width:900px) and (min-width:400px) {
+        .changeaddvideotext::after {
+            content: "Add Video";
+        }
         .mycardstyle {
             height: 30vw;
             width: 90vw;
@@ -70,6 +100,9 @@
     }
     
     @media (max-width:400px) and (min-width:10px) {
+        .changeaddvideotext::after {
+            content: "Add";
+        }
         .mycardstyle {
             height: 30vw;
             width: 90vw;
@@ -94,27 +127,7 @@
         }
     }
 </style>
-<!-- model -->
-<button type="button" class="btn btn-outline-success changeaddvideotext" data-bs-toggle="modal" data-bs-target="#exampleModal1"></button>
-
-<!-- Modal -->
-<div class="modal fade " id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog ">
-        <div class="modal-content  p-2 bg-secondary">
-            <div class="modal-header">
-                <h5 class="modal-title " id="exampleModalLabel">Add Video</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <h1 class="my-5 text-center">Add Video</h1>
-            <form method="post" action="addvideo" enctype="multipart/form-data">
-                {% csrf_token %} {{form}}
-
-                <button type="submit" class="btn btn-success border-dark text-dark container my-3 ">Add</button>
-            </form>
-        </div>
-    </div>
-</div>
-{% endblock addvideo %} {% block body %}{% load humanize %}
+{% load humanize %}
 <div class="container mt-5">
 
     <form method="get" action="" class="d-flex">
