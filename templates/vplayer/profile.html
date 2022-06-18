@@ -4,56 +4,371 @@
         margin-left: -50%;
     }
     
-    audio {
-        /*border-radius: 90px;*/
-        width: 250px;
-        height: 45px;
-        margin-top: 5px;
-        margin-bottom: 5px;
+    @media screen and (min-width:770px) {
+        .mybuttons {
+            display: inline-block;
+            margin-left: 1rem;
+        }
+        .btnbox {
+            margin-top: 1rem;
+        }
+        .mycardstyle {
+            height: 30vw;
+            width: 90vw;
+            margin: 5% 5% 25rem 5%;
+        }
+        .mycardtexts {
+            height: 10rem;
+        }
+        .myflexbox {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .dateortime {
+            font-size: .8rem
+        }
+        .videotitle {
+            height: 1rem;
+        }
+        .searchcontent::after {
+            content: "Search";
+        }
+        .customprofilebox {
+            width: 90vw;
+            height: 70vw;
+        }
+        .changeaudiotext::after {
+            content: "Add Audio";
+        }
+        .customaudiobox {
+            width: 90vw;
+            height: 40vw;
+            display: inline-block;
+            margin: 5vw 5vw 1vw 5vw;
+            padding: 5vw 1vw 2vw 1vw;
+            border-radius: 10%;
+        }
+        .customimage {
+            width: 23vw;
+            display: inline;
+            border-radius: 50%;
+            height: 20vw;
+            margin-bottom: 5vw;
+            margin-right: 5vw;
+        }
+        .audiotitle {
+            display: inline;
+        }
+        audio {
+            /*border-radius: 90px;*/
+            width: 250%;
+            height: 20%;
+            margin-top: 5%;
+            margin-bottom: 5%;
+        }
+        audio::-webkit-media-controls-timeline {
+            background-color: turquoise;
+            border-radius: 3000rem;
+            margin-left: 1%;
+            margin-right: 1%;
+        }
+        audio::-webkit-media-controls-volume-slider {
+            border-radius: 25%;
+            background-color: brown;
+            /* border-radius: 25px 0px 0px 25px; */
+            padding-left: 8%;
+            padding-right: 8%;
+        }
+        /* TIME */
+        audio::-webkit-media-controls-time-remaining-display {
+            color: red;
+            font-size: 100%;
+        }
+        audio::-webkit-media-controls-current-time-display {
+            color: cyan;
+            font-size: 100%;
+            margin-left: 1%;
+        }
+        audio::-webkit-media-controls-play-button {
+            /* color: violet; */
+            padding-left: 2%;
+            background-color: turquoise;
+            border-radius: 100%;
+        }
+        /* mute button */
+        audio::-webkit-media-controls-mute-button {
+            border-radius: 100%;
+            background-color: brown;
+            border-radius: 100%;
+        }
+        /* this is bg black */
+        audio::-webkit-media-controls-panel {
+            background-color: black;
+        }
     }
     
-    audio::-webkit-media-controls-timeline {
-        background-color: turquoise;
-        border-radius: 25px;
-        margin-left: 10px;
-        margin-right: 10px;
+    @media (max-width:770px) and (min-width:500px) {
+        .mybuttons {
+            display: inline-block;
+            margin-left: 1rem;
+        }
+        .btnbox {
+            margin-top: 1rem;
+        }
+        .mycardstyle {
+            height: 30vw;
+            width: 90vw;
+            margin: 5% 5% 20rem 5%;
+        }
+        .mycardtexts {
+            height: 10rem;
+        }
+        .myflexbox {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .dateortime {
+            font-size: .8rem
+        }
+        .videotitle {
+            height: 1rem;
+        }
+        .searchcontent::after {
+            content: "🔎";
+        }
+        .changeaudiotext::after {
+            content: "Add Audio";
+        }
+        .customaudiobox {
+            width: 90vw;
+            height: 18rem;
+            display: inline-block;
+            margin: 5vw 5vw 1vw 5vw;
+            padding: 5vw 1vw 2vw 1vw;
+            border-radius: 10%;
+        }
+        .customimage {
+            width: 23vw;
+            display: inline;
+            border-radius: 50%;
+            height: 20vw;
+            margin-bottom: 3vw;
+            margin-right: 5vw;
+        }
+        .audiotitle {
+            display: inline;
+        }
+        audio {
+            /*border-radius: 90px;*/
+            width: 250%;
+            height: 20%;
+            margin-top: 5%;
+            margin-bottom: 5%;
+        }
+        audio::-webkit-media-controls-timeline {
+            background-color: turquoise;
+            border-radius: 3000rem;
+            margin-left: 1%;
+            margin-right: 1%;
+        }
+        audio::-webkit-media-controls-volume-slider {
+            border-radius: 25%;
+            background-color: brown;
+            /* border-radius: 25px 0px 0px 25px; */
+            padding-left: 8%;
+            padding-right: 8%;
+        }
+        /* TIME */
+        audio::-webkit-media-controls-time-remaining-display {
+            color: red;
+            font-size: 100%;
+        }
+        audio::-webkit-media-controls-current-time-display {
+            color: cyan;
+            font-size: 100%;
+            margin-left: 1%;
+        }
+        audio::-webkit-media-controls-play-button {
+            /* color: violet; */
+            padding-left: 2%;
+            background-color: turquoise;
+            border-radius: 100%;
+        }
+        /* mute button */
+        audio::-webkit-media-controls-mute-button {
+            border-radius: 100%;
+            background-color: brown;
+            border-radius: 100%;
+        }
+        /* this is bg black */
+        audio::-webkit-media-controls-panel {
+            background-color: black;
+        }
     }
     
-    audio::-webkit-media-controls-volume-slider {
-        border-radius: 25%;
-        background-color: brown;
-        /* border-radius: 25px 0px 0px 25px; */
-        padding-left: 8px;
-        padding-right: 8px;
+    @media (max-width:500px) and (min-width:310px) {
+        .mybuttons {
+            display: inline-block;
+            margin-left: 1rem;
+        }
+        .btnbox {
+            margin-top: 1rem;
+        }
+        .mycardstyle {
+            height: 30vw;
+            width: 90vw;
+            margin: 5% 5% 17rem 5%;
+        }
+        .mycardtexts {
+            height: 8rem;
+        }
+        .myflexbox {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .dateortime {
+            font-size: .8rem
+        }
+        .videotitle {
+            height: 1rem;
+        }
+        .searchcontent::after {
+            content: "🔎";
+        }
+        .changeaudiotext::after {
+            content: "Add";
+        }
+        .customaudiobox {
+            width: 90vw;
+            height: 20rem;
+            display: inline-block;
+            margin: 5vw 5vw 1vw 5vw;
+            padding: 5vw 1vw 2vw 1vw;
+            border-radius: 10%;
+        }
+        .customimage {
+            width: 23vw;
+            display: inline;
+            border-radius: 50%;
+            height: 20vw;
+            margin-bottom: 2vw;
+            margin-right: 5vw;
+        }
+        .audiotitle {
+            display: inline;
+            font-size: 5vw;
+        }
+        .dateortime {
+            font-size: 3vw;
+        }
+        audio {
+            /*border-radius: 90px;*/
+            width: 250%;
+            height: 20%;
+            margin-top: 5%;
+            margin-bottom: 5%;
+        }
+        audio::-webkit-media-controls-timeline {
+            background-color: turquoise;
+            border-radius: 3000rem;
+            margin-left: 1%;
+            margin-right: 1%;
+        }
+        audio::-webkit-media-controls-volume-slider {
+            border-radius: 25%;
+            background-color: brown;
+            /* border-radius: 25px 0px 0px 25px; */
+            padding-left: 1%;
+            padding-right: 1%;
+        }
+        /* TIME */
+        audio::-webkit-media-controls-time-remaining-display {
+            color: red;
+            font-size: 100%;
+        }
+        audio::-webkit-media-controls-current-time-display {
+            color: cyan;
+            font-size: 100%;
+            margin-left: 1%;
+        }
+        audio::-webkit-media-controls-play-button {
+            /* color: violet; */
+            padding-left: 2%;
+            background-color: turquoise;
+            border-radius: 100%;
+        }
+        /* mute button */
+        audio::-webkit-media-controls-mute-button {
+            border-radius: 100%;
+            background-color: brown;
+            border-radius: 100%;
+            margin-right: -10%;
+        }
+        /* this is bg black */
+        audio::-webkit-media-controls-panel {
+            background-color: black;
+        }
     }
-    /* TIME */
     
-    audio::-webkit-media-controls-time-remaining-display {
-        color: red;
-    }
-    
-    audio::-webkit-media-controls-current-time-display {
-        color: cyan;
-        margin-left: 3%;
-    }
-    
-    audio::-webkit-media-controls-play-button {
-        /* color: violet; */
-        padding-left: 2%;
-        background-color: turquoise;
-        border-radius: 100%;
-    }
-    /* mute button */
-    
-    audio::-webkit-media-controls-mute-button {
-        border-radius: 100%;
-        background-color: brown;
-        border-radius: 100%;
-    }
-    /* this is bg black */
-    
-    audio::-webkit-media-controls-panel {
-        background-color: black;
+    @media (max-width:310px) and (min-width:10px) {
+        .mybuttons {
+            display: inline-block;
+            margin-left: .5rem;
+        }
+        .btnbox {
+            margin-top: .5rem;
+        }
+        .mycardstyle {
+            height: 30vw;
+            width: 90vw;
+            margin: 5% 5% 17rem 5%;
+        }
+        .mycardtexts {
+            height: 8rem;
+        }
+        .myflexbox {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .dateortime {
+            font-size: .8rem
+        }
+        .videotitle {
+            height: 1rem;
+        }
+        .searchcontent::after {
+            content: "🔎";
+        }
+        .changeaudiotext::after {
+            content: "Add";
+        }
+        .customaudiobox {
+            width: 90vw;
+            height: 20rem;
+            display: inline-block;
+            margin: 5vw 5vw 1vw 5vw;
+            padding: 5vw 1vw 2vw 1vw;
+            border-radius: 10%;
+        }
+        .customimage {
+            width: 40vw;
+            display: inline;
+            border-radius: 50%;
+            height: 30vw;
+            margin-bottom: 2vw;
+            margin-right: .5vw;
+        }
+        .audiotitle {
+            display: inline;
+            font-size: 7vw;
+        }
+        .dateortime {
+            font-size: 5vw;
+        }
     }
 </style>
 <nav aria-label="breadcrumb">
@@ -67,39 +382,54 @@
 
     <form method="get" action="" class="d-flex">
         <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-success" type="submit">Search</button>
+        <button class="btn btn-success searchcontent" type="submit"></button>
     </form>
 </div>
 <h1 id="videoprofile" class="text-center my-3 text-light">Videos</h1>
-<hr> {% for video in videos %}
+<hr>
+<div class="myflexbox">
+
+    {% for video in videos %}
 
 
-<div class='row container py-3 bg-secondary mx-5 border border-dark rounded-3  d-inline-block my-5'>
+    <div class="col-3 col-sm-3 mycardstyle">
 
-    <video name='video' autoplay="false" controls width='70%' height='60%'>
-        <source src="{{video.video.url}}" type="video/mp4"></source>
-	</video>
-    <h3 class="mb-4 d-block ">{{video.title|title}}</h3>
-    <hr>
-    <span class="mb-4 ml-4 d-inline">{{video.name|title}}</span>
-    <span class="mb-4 p-0 d-inline">-</span>
-    <span class="mb-4 d-inline">{{video.date|naturaltime}}</span> {% if video.onhide == True %} 🔒 {% else %} 🔓 {% endif %}
-    <!-- Default dropup button -->
-    <li style="list-style-type: none; margin-left: 90%;" class="nav-item dropdown d-inline ">
-        <a class="nav-link dropdown-toggle text-dark d-inline " href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
-        <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-            <li><a class="dropdown-item" href="onvdelete/{{video.sno}}">Delete</a></li>
-            {% if video.onhide == True %}
-            <li><a class="dropdown-item" href="onvunhide/{{video.sno}}">Make Public</a></li>
-            {% else %}
-            <li><a class="dropdown-item" href="onvhide/{{video.sno}}">Make Private</a></li>
-            {% endif %}
-            <li>
-                <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Reprot</a></li>
-        </ul>
-    </li>
+        <div class="card my-3 border-dark">
+            <a href="video/{{video.sno}}">
+                <!-- <img src="{{video.cover.url}}" class="card-img-top" alt="..."> -->
+                <video name='video' class="card-img-top" muted autoplay="false" poster="{{video.cover.url}}">
+                    <source src="{{video.video.url}}" type="video/mp4"></source>
+                </video>
+            </a>
+
+            <div class="card-body text-light mycardtexts" style="background-color:#181818">
+
+                <a href="video/{{video.sno}}" class="mb-2 text-light" style="text-decoration: none;">
+                    <p class="card-text videotitle mb-1">{{video.title|title|truncatechars:30}}</p>
+                </a>
+                <span class="mb-2 dateortime text-muted ml-4 d-inline">{{video.user.first_name|title}}</span>
+                <span class="mb-2 dateortime text-muted p-0 d-inline">-</span>
+                <span class="mb-2 dateortime text-muted d-inline">{{video.date|date:"M d, Y"}}
+                    &nbsp;&nbsp;&nbsp; {% if video.onhide == True %} 🔒 {% else %} 🔓 {% endif %}
+                    <div class="btnbox">
+
+                        <a class="btn btn-outline-danger mybuttons" style="margin-bottom: 0rem;" href="onvdelete/{{video.sno}}">Delete</a>
+                        {% if video.onhide == True %}
+                        <a class="btn btn-outline-success mybuttons" style="margin-bottom: 0rem;" href="onvunhide/{{video.sno}}">Make Public</a>
+                        {% else %}
+                        <a class="btn btn-outline-primary mybuttons"   style="margin-bottom: 0rem;" href="onvhide/{{video.sno}}">Make Private</a>
+                        {% endif %}
+                    </div>
+                        <span>
+                   
+               
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
 
 
 </div>
@@ -112,31 +442,35 @@
     </ol>
 </nav>
 <h1 id="audioprofile" class="text-center my-3 text-light">Audios</h1>
-<hr> {% for audio in audios %}
+<hr> {% load humanize %} {% for audio in audios %}
 
-<div class='row container py-3 bg-secondary mx-5 border border-dark rounded-3  d-inline-block my-5'>
-    <img src="{{audio.cover.url}}" class=" mb-4" width="40" height="300" alt="">
-    <h3 class="mb-4 d-block">{{audio.title|title}}</h3>
+<div class='row container  bg-secondary  border border-dark rounded-3  customaudiobox'>
+    <img src="{{audio.cover.url}}" class="customimage" alt="">
+    <div style="display: inline;" class="audioinfo">
 
-    <audio controls class="my-3">
+        <span class="mb-2" style="display: inline-block;"><h3 class="audiotitle">{{audio.title|title}}</h3>
+            <br>
+            
+        <span class="mb-2 dateortime ml-4 d-inline">{{audio.user.first_name|title}}</span>
+                <span class="mb-2 dateortime p-0 d-inline">-</span>
+                <span class="mb-2 dateortime d-inline">{{audio.date|date:"M d, Y"}}&nbsp;&nbsp;&nbsp; {% if video.onhide == True %} 🔒 {% else %} 🔓 {% endif %}
+                    <div class="btnbox">
+
+                        <a class="btn btn-danger text-dark mybuttons"   href="onvdelete/{{video.sno}}">Delete</a>
+                        {% if video.onhide == True %}
+                        <a class="btn btn-success text-dark mybuttons"   href="onvunhide/{{video.sno}}">Make Public</a>
+                        {% else %}
+                        <a class="btn btn-primary text-dark mybuttons"   href="onvhide/{{video.sno}}">Make Private</a>
+                        {% endif %}
+                    </div></span>
+                </span>
+
+            </div>
+            <audio controls class="my-3">
         <source src="{{audio.audio.url}}" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-    <span class="mb-4 ml-4 d-inline">{{audio.name|title}}</span>
-    <span class="mb-4 p-0 d-inline">-</span>
 
-    <!-- Default dropup button -->
-    <li style="list-style-type: none; margin-left: 90%;" class="nav-item dropdown d-inline ">
-        <a class="nav-link dropdown-toggle text-dark d-inline " href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
-        <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-            <li><a class="dropdown-item" href="onadelete/{{audio.sno}}">Delete</a></li>
-            <li><a class="dropdown-item" href="onahide/{{audio.sno}}">Make Private</a></li>
-            <li>
-                <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Reprot</a></li>
-        </ul>
-    </li>
-</div>
+        </div>
 
-{% endfor %} {% endblock body %}
+        {% endfor %} {% endblock body %}

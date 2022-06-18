@@ -7,26 +7,122 @@
     .form-control:-moz-placeholder {
         color: gray;
     }
+    
+    @media screen and (min-width:800px) {
+        .myvideo {
+            height: 80vh;
+            width: 95vw;
+        }
+        .asalvideo {
+            height: 80vh;
+            width: 95vw;
+        }
+        .halfbox {
+            width: 95vw;
+        }
+        .halfcomment {
+            width: 98vw;
+        }
+        .mylike::after{
+            content:"Likes"
+        }
+        .mydislike::after{
+            content:"Dislikes"
+        }
+    }
+    
+    @media (max-width:800px) and (min-width:500px) {
+        .myvideo {
+            height: 50vh;
+            width: 95vw;
+        }
+        .asalvideo {
+            height: 50vh;
+            width: 95vw;
+        }
+        .halfbox {
+            width: 95vw;
+        }
+        .halfcomment {
+            width: 98vw;
+        }
+         .mylike::after{
+            content:"Likes"
+        }
+        .mydislike::after{
+            content:"Dislikes"
+        }
+   
+    }
+    @media (max-width:500px) and (min-width:300px) {
+        .myvideo {
+            height: 40vh;
+            width: 95vw;
+        }
+        .asalvideo {
+            height: 40vh;
+            width: 95vw;
+        }
+        .halfbox {
+            width: 95vw;
+        }
+        .halfcomment {
+            width: 98vw;
+        }
+        .mymore{
+            margin-left:-20%;
+        }
+
+
+
+
+   
+    }
+    @media (max-width:300px) and (min-width:3px) {
+        .myvideo {
+            height: 30vh;
+            width: 95vw;
+        }
+        .asalvideo {
+            height: 30vh;
+            width: 95vw;
+        }
+        .halfbox {
+            width: 95vw;
+        }
+        .halfcomment {
+            width: 98vw;
+        }
+        .mymore{
+            margin-left:-20%;
+        }
+   
+    }
+
+
 </style>
-<div class=' mx-3 rounded-3 text-light  d-inline-block myb-5' style="width: 64%; ">
+<div class=' mx-3 rounded-3 text-light  d-inline-block myb-5'>
 
-    <video name='video' autoplay="false" controls style="height: 30rem; width: 50rem; ">
-        <source src="{{video.video.url}}" type="video/mp4"></source>
+    <video name='video' autoplay="false" controls class="myvideo">
+        <source class="asalvideo" src="{{video.video.url}}" type="video/mp4">
 	</video>
-    <h3 class="mb-4 d-block ">{{video.title|title}}</h3>
-    <span class="mb-4 -5 d-inline">{{video.name|title}}</span>
-    <span class="mb-4  p-0 d-inline">-</span>
-    <span class="mb-4  d-inline">{{video.date|naturaltime}}</span>
-    <button class="btn bt-primany">👍 {{video.like}} Likes</button>
-    <button class="btn bt-primany">👎 {{video.like}} Dislikes</button>
+    <div class="halfbox">
 
-    <li style="list-style-type: none; margin-left: 90%;" class="nav-item dropdown d-inline ">
-        <a class="nav-link dropdown-toggle text-dark d-inline " href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
-        <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-            <li><a class="dropdown-item" href="#">Report</a></li>
-        </ul>
-    </li>
-    <hr>
+        <h3 class="mb-4 d-block ">{{video.title|title}}</h3>
+        <span class="mb-4 text-light d-inline">{{video.user.first_name|title}}</span>
+        <span class="mb-4 text-light p-0 d-inline">-</span>
+        <span class="mb-4 text-light d-inline">{{video.date|naturaltime}}</span>
+        <button class="btn mylike text-light bt-primany">👍 {{video.like}} </button>
+        <button class="btn mydislike text-light bt-primany">👎 {{video.like}} </button>
+
+        <li style="list-style-type: none; margin-left: 90%;" class="nav-item dropdown d-inline ">
+            <a class="nav-link dropdown-toggle mymore text-light d-inline " href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
+            <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                <li><a class="dropdown-item" href="#">Report</a></li>
+            </ul>
+        </li>
+        <hr>
+    </div>
 
 
 
@@ -39,33 +135,39 @@
 
 
     <h4 class="mx-5 my-3">{{comments.count}} Comments</h4>
-    <div class="container">
+    <div class="halfcomment">
+        <div class="container">
 
-        <form action="/vcomment/{{video.sno}}" method="post">
-            {% csrf_token %} {% if user.is_authenticated %}
-            <input type="text" name="vcomment" id="vcomment" placeholder="Add a comment.." class="form-control text-light" style="border-color:black black white black; background-color:#181818;">
+            <form action="/vcomment/{{video.sno}}" method="post">
+                {% csrf_token %} {% if user.is_authenticated %}
+                <input type="text" name="vcomment" id="vcomment" placeholder="Add a comment.." class="form-control text-light" style="border-color:black black white black; background-color:#181818;">
+                <span>
 
-            <button type="reset" class="btn btn-outline-secondary my-3 " style="margin-left: 83%; display: inline;" onclick="clear(document.getElementById('vcomment'))">Clear</button>
-            <button type="submit" class="btn btn-outline-secondary my-3 d-inline" style="margin-left:1%; display: inline;">Add</button>
-            <script>
-                function clear(id) {
-                    id.innerHTML = ""
-                }
-            </script>
+                <button type="reset" class="btn btn-outline-secondary my-3 " style=" display: inline;" onclick="clear(document.getElementById('vcomment'))">Clear</button>
+                <button type="submit" class="btn btn-outline-secondary my-3 d-inline" style="margin-left:1%; display: inline;">Add</button>
+            </span>
+                <script>
+                    function clear(id) {
+                        id.innerHTML = ""
+                    }
+                </script>
 
-            {% else %}
-            <input type="text" name="vcomment" id="vcomment" placeholder="Please Login To Add a comment.." class="form-control text-light" style="border-color:black black white black; background-color:#181818;" disabled> {% endif %}
-        </form>
-        <div class="container my-4">
+                {% else %}
+                <input type="text" name="vcomment" id="vcomment" placeholder="Please Login To Add a comment.." class="form-control text-light" style="border-color:black black white black; background-color:#181818;" disabled> {% endif %}
+            </form>
+            <div class="container my-4">
 
-            {% for comment in comments %}
-            <h5>{{comment.user.first_name|title}} {{comment.user.last_name|title}}</h5>
-            <span style="font-size: 80%;" class="text-muted">{{comment.user.username|title}} - {{comment.time|naturaltime}}</span>
-            <p class="m-4">{{comment.comment}}</p>
-            <hr> {% endfor %}
+                {% for comment in comments %}
+                <h5>{{comment.user.first_name|title}} {{comment.user.last_name|title}}</h5>
+                <span style="font-size: 80%;" class="text-muted">{{comment.user.username|title}} - {{comment.time|naturaltime}}</span>
+                <p class="m-4">{{comment.comment}}</p>
+                <hr> {% endfor %}
 
+            </div>
         </div>
     </div>
+
+
 </div>
 
 
@@ -74,62 +176,37 @@
 
 
 
-
-<div style="width: 30%; top: 0; display: block; position: relative; margin-left: 67%; margin-top: -63%;">
+{% comment %} <div class="myflexbox">
 
     {% for other in otherv %}
 
-    <div class="row g-0  flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col-6 d-none d-lg-block m-0" style="margin-right: 1%;">
-            <a href="/video/{{other.sno}}">
-                <img src="{{other.cover.url}}" class="d-inline" style="height: 8rem; width: 100%;" alt="...">
+
+    <div class="col-3 col-sm-3 mycardstyle">
+
+        <div class="card my-3 border-dark">
+            <a href="video/{{other.sno}}">
+                <!-- <img src="{{video.cover.url}}" class="card-img-top" alt="..."> -->
+                <a href="/video/{{other.sno}}">
+                    <img src="{{other.cover.url}}" class="d-inline slideimages" alt="...">
+                </a>
             </a>
-        </div>
-        <div class="col  d-flex flex-column position-static ">
 
-            <span class="m-2 mx-2 text-light"> <a href="/video/{{video.sno}}" style="text-decoration: none; color: white;">{{other.title|title|truncatechars:35}}</a></span>
+            <div class="card-body text-light mycardtexts" style="background-color:#181818">
 
-            <div class=" d-flex flex-row mt-2 mx-2">
-
-                <span style="font-size:.7rem;" class="text-muted mb-1 ml-4 d-inline">{{other.name|title}} </span>
-            </div>
-            <div class=" d-flex flex-row mt-1 mx-2">
-
-                <span style="font-size:.7rem;" class="text-muted mb-1 d-inline"> {{other.date|naturaltime}}</span>
+                <a href="video/{{other.sno}}" class="mb-2 text-light" style="text-decoration: none;">
+                    <p class="card-text videotitle mb-1">{{other.title|title|truncatechars:30}}</p>
+                </a>
+                <span class="mb-2 dateortime text-muted ml-4 d-inline">{{other.user.first_name|title}}</span>
+                <span class="mb-2 dateortime text-muted p-0 d-inline">-</span>
+                <span class="mb-2 dateortime text-muted d-inline">{{other.date|date:"M d, Y"}}</span>
             </div>
         </div>
-
     </div>
 
+
     {% endfor %}
-</div>
+
+</div> {% endcomment %}
 
 
 {% endblock body %}
-<!-- 
-<div class=" my-3 border-dark text-left d-inline-block" style="margin-left: 3%;">
-    <div style="display:inline">
-        <a href="video/{{other.sno}}" style="text-decoration: none;">
-            <img src="{{other.cover.url}}" class="d-inline" style="height: 6rem; width: 40%;" alt="...">
-        </a>
-    </div>
-<video name='video' class="card-img-top" muted autoplay="false" poster="{{other.cover.url}}">
-            <source src="{{other.video.url}}" type="video/mp4"></source>
-        </video> -->
-<!-- 
-    <a href="video/{{other.sno}}" class=" text-light" style="text-decoration: none;display: inline;">
-        <div style="display:inline;width: 10%;" class="text-right">
-            <span class="text-light text-right" style="display: inline; margin-top: -30%;">{{other.title|title|truncatechars:30}}</span>
-        </div>
-
-    </a> -->
-<!-- </div> -->
-<!-- </a> -->
-<!-- <div class=" text-light d-inline" style="background-color:#181818"> -->
-
-
-<!-- 
-    <span style="font-size:.8rem;" class="text-light mb-4 ml-4 d-inline">{{other.name|title}}</span>
-    <span style="font-size:.8rem;" class="text-light mb-4 p-0 d-inline">-</span>
-    <span style="font-size:.8rem;" class="text-light mb-4 d-inline">{{other.date|naturaltime}}</span>
-</div> -->-->

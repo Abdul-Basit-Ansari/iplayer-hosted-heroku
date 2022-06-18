@@ -91,9 +91,10 @@ def signup(request):
 			user.last_name = lname
 
 			user.save()
+			login(request, user)
 			messages.success(request,"Your Account Is Created")
 			return redirect("index")
-	print("signup")
+	
 
 	if not u.is_authenticated:
 		return redirect("index",{'user':u})

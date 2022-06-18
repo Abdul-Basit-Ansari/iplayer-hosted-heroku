@@ -1,12 +1,106 @@
 {% extends 'base.html' %} {% block title %} Video Player {% endblock title %} {% block addvideo %}
-
+<style>
+    @media screen and (min-width:500px) {
+        .changeaddvideotext::after {
+            content: "Add Video";
+        }
+    }
+    
+    @media (max-width:500px) and (min-width: 330px) {
+        .changeaddvideotext::after {
+            content: "Add";
+        }
+    }
+    
+    @media (max-width:330px) and (min-width:10px) {
+        .changeaddvideotext::after {
+            content: "Add";
+        }
+    }
+    
+    @media screen and (min-width:900px) {
+        .mycardstyle {
+            height: 15vw;
+            width: 22.5vw;
+            margin: 1rem;
+            margin-right: .5rem;
+        }
+        .mycardtexts {
+            height: 10vw;
+        }
+        .myflexbox {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .dateortime {
+            font-size: .8rem
+        }
+        .videotitle {
+            height: 3rem;
+        }
+        .searchcontent::after {
+            content: "Search";
+        }
+    }
+    
+    @media (max-width:900px) and (min-width:400px) {
+        .mycardstyle {
+            height: 30vw;
+            width: 90vw;
+            margin: 5% 5% 35% 5%;
+        }
+        .mycardtexts {
+            height: 5vw;
+        }
+        .myflexbox {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .dateortime {
+            font-size: .8rem
+        }
+        .videotitle {
+            height: 1rem;
+        }
+        .searchcontent::after {
+            content: "Search";
+        }
+    }
+    
+    @media (max-width:400px) and (min-width:10px) {
+        .mycardstyle {
+            height: 30vw;
+            width: 90vw;
+            margin: 5% 5% 50% 5%;
+        }
+        .mycardtexts {
+            height: 5vw;
+        }
+        .myflexbox {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .dateortime {
+            font-size: .8rem
+        }
+        .videotitle {
+            height: 1rem;
+        }
+        .searchcontent::after {
+            content: "🔎";
+        }
+    }
+</style>
 <!-- model -->
-<button type="button" class="btn btn-outline-success btl" data-bs-toggle="modal" data-bs-target="#exampleModal1">Add Video</button>
+<button type="button" class="btn btn-outline-success changeaddvideotext" data-bs-toggle="modal" data-bs-target="#exampleModal1"></button>
 
 <!-- Modal -->
 <div class="modal fade " id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog ">
-        <div class="modal-content  p-5 bg-secondary">
+        <div class="modal-content  p-2 bg-secondary">
             <div class="modal-header">
                 <h5 class="modal-title " id="exampleModalLabel">Add Video</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -25,20 +119,20 @@
 
     <form method="get" action="" class="d-flex">
         <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-success" type="submit">Search</button>
+        <button class="btn btn-success searchcontent" type="submit"></button>
     </form>
 </div>
 
 
 
-<div class="d-flex flex-row">
+<div class="myflexbox">
 
     {% for video in videos %}
 
 
-    <div class="col-3 col-sm-3 ">
+    <div class="col-3 col-sm-3 mycardstyle">
 
-        <div class="card my-3 border-dark" style="height: 18rem; width: 18rem; margin-left: 5%;">
+        <div class="card my-3 border-dark">
             <a href="video/{{video.sno}}">
                 <!-- <img src="{{video.cover.url}}" class="card-img-top" alt="..."> -->
                 <video name='video' class="card-img-top" muted autoplay="false" poster="{{video.cover.url}}">
@@ -46,21 +140,21 @@
                 </video>
             </a>
 
-            <div class="card-body text-light" style="background-color:#181818">
+            <div class="card-body text-light mycardtexts" style="background-color:#181818">
 
-                <a href="video/{{video.sno}}" class="mb-5 text-light" style="text-decoration: none;">
-                    <h5 class="card-text mb-4">{{video.title|title|truncatechars:50}}</h5>
+                <a href="video/{{video.sno}}" class="mb-2 text-light" style="text-decoration: none;">
+                    <p class="card-text videotitle mb-1">{{video.title|title|truncatechars:30}}</p>
                 </a>
-                <span style="font-size: .8rem;" class="mb-4 ml-4 d-inline">{{video.name|title}}</span>
-                <span style="font-size: .8rem;" class="mb-4 p-0 d-inline">-</span>
-                <span style="font-size: .8rem;" class="mb-4 d-inline">{{video.date|naturaltime}}</span>
+                <span class="mb-2 dateortime text-muted ml-4 d-inline">{{video.user.first_name|title}}</span>
+                <span class="mb-2 dateortime text-muted p-0 d-inline">-</span>
+                <span class="mb-2 dateortime text-muted d-inline">{{video.date|date:"M d, Y"}}</span>
             </div>
         </div>
     </div>
 
     {% if forloop.counter|divisibleby:4 %}
 </div>
-<div class="d-flex flex-row">
+<div class="myflexbox" style="margin-top: 4rem;">
 
     {% endif %} {% endfor %}
 </div> {% endblock body %}

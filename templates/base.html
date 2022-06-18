@@ -50,21 +50,59 @@
             background-color: #157347;
         }
         
-        @media (max-width:500px) and (min-width: 30px) {
-            .changecontantca::after {
-                content: "Create";
-            }
-            .changecontantla::after {
-                content: "Login";
-            }
-        }
-        
         @media screen and (min-width:500px) {
             .changecontantca::after {
                 content: "Create Account";
             }
             .changecontantla::after {
                 content: "Login Account";
+            }
+            .changeemailt::after {
+                content: "@example.com";
+            }
+            .changeprofiletext::after {
+                content: "{{user.first_name|title}}";
+            }
+            .changelogouttext::after {
+                content: "Logout";
+            }
+        }
+        
+        @media (max-width:500px) and (min-width: 330px) {
+            .changecontantca::after {
+                content: "Create";
+            }
+            .changecontantla::after {
+                content: "Login";
+            }
+            .changeemailt::after {
+                content: "@";
+            }
+            .changeprofiletext::after {
+                content: "{{user.first_name|title}}";
+            }
+            .changelogouttext {
+                display: none;
+            }
+        }
+        
+        @media (max-width:330px) and (min-width:10px) {
+            .changecontantca::after {
+                content: "➕";
+                font-size: 100%;
+            }
+            .changecontantla::after {
+                content: "Login";
+                font-size: 100%;
+            }
+            .changeemailt::after {
+                content: "@";
+            }
+            .changeprofiletext {
+                display: none;
+            }
+            .changelogouttext {
+                display: none;
             }
         }
         
@@ -73,18 +111,18 @@
             width: 90%;
         }
     </style>
-    <nav class="navbar navbar-dark border-bottom bordr-secondary bg-dark">
+    <nav class="navbar navbar-dark border-bottom bordr-secondary  bg-dark">
         <div class="container-fluid ">
 
             {% if not user.is_authenticated %}
             <span>
 
-                <a class="mx-4 navbar-brand" href="/">iPlayer</a>
+                <a class="mx-2 navbar-brand" href="/">iPlayer</a>
                 
 
 
             <!-- model -->
-            <button type="button" class="btn btn-outline-success changecontantca" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
+            <button type="button" class="btn btn-outline-success changecontantca" data-bs-toggle="modal " data-bs-target="#exampleModal" ></button>
             <!-- model -->
             <button type="button" class="btn btn-outline-success changecontantla" data-bs-toggle="modal" data-bs-target="#exampleModal1"></button>
         </span>
@@ -92,7 +130,7 @@
             <!-- Modal -->
             <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog ">
-                    <div class="modal-content  p-5 bg-secondary">
+                    <div class="modal-content  p-1 bg-secondary">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Create Account</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -112,7 +150,7 @@
 
                                 <div class="input-group mb-3 ">
                                     <input type="email" name="email" class="form-control bg-dark text-success border-success " placeholder="Email Address " aria-label="Email Address " aria-describedby="basic-addon2 ">
-                                    <span class="input-group-text bg-success text-dark border-dark " id="basic-addon2 ">@example.com</span>
+                                    <span class="input-group-text changeemailt bg-success text-dark border-dark " id="basic-addon2 "></span>
                                 </div>
 
 
@@ -152,7 +190,7 @@
             <!-- Modal -->
             <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog ">
-                    <div class="modal-content p-5 bg-secondary">
+                    <div class="modal-content p-2 bg-secondary">
                         <div class="modal-header">
                             <h5 class="modal-title " id="exampleModalLabel">Login</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -179,9 +217,10 @@
             {% else %}
 
             <span>
-            <a class="mx-4 navbar-brand" href="/">iPlayer</a>
-            <a href="/yourprofile" class="btn btn-outline-primary btn-sm-sm">Your Profile</a> {% block addvideo %} {% endblock addvideo %}
-            <a href="/logout" class="btn btn-outline-danger ">Logout</a> {% endif %}
+            <a class="mx-2 navbar-brand" href="/">iPlayer</a>
+            <a href="/yourprofile" class="btn btn-outline-primary btn-sm-sm changeprofiletext"></a> {% block addvideo %} {% endblock addvideo %}
+            <a href="/logout" class="btn btn-outline-danger changelogouttext"></a>
+            {% endif %}
             </span>
 
 
@@ -211,13 +250,13 @@
 					More
 				  </a>
                             <ul class="dropdown-menu bg-dark" aria-labelledby="offcanvasNavbarDropdown">
-                                <li><a class="dropdown-item text-light" href="/about">About</a></li>
+                                <li><a class="dropdown-item text-light" href="/yourprofile">Your Profile</a></li>
                                 <!-- <li><a class="dropdown-item" href="signup">Create Account</a></li> -->
                                 <li><a class="dropdown-item text-light" href="/contactus">Contact Us</a>
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li>
-                                    <a class="dropdown-item text-light" href="/report">Report</a>
+                                    <a class="dropdown-item text-light" href="/logout">Logout</a>
                                 </li>
                             </ul>
                         </li>
