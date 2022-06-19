@@ -453,11 +453,11 @@
             
         <span class="mb-2 dateortime ml-4 d-inline">{{audio.user.first_name|title}}</span>
                 <span class="mb-2 dateortime p-0 d-inline">-</span>
-                <span class="mb-2 dateortime d-inline">{{audio.date|date:"M d, Y"}}&nbsp;&nbsp;&nbsp; {% if video.onhide == True %} 🔒 {% else %} 🔓 {% endif %}
+                <span class="mb-2 dateortime d-inline">{{audio.date|date:"M d, Y"}}&nbsp;&nbsp;&nbsp; {% if audio.onhide == True %} 🔒 {% else %} 🔓 {% endif %}
                     <div class="btnbox">
 
                         <a class="btn btn-danger text-dark mybuttons"   href="onadelete/{{audio.sno}}">Delete</a>
-                        {% if video.onhide == True %}
+                        {% if audio.onhide == True %}
                         <a class="btn btn-success text-dark mybuttons"   href="onaunhide/{{audio.sno}}">Make Public</a>
                         {% else %}
                         <a class="btn btn-primary text-dark mybuttons"   href="onahide/{{audio.sno}}">Make Private</a>

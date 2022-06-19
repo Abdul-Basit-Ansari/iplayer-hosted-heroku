@@ -54,7 +54,8 @@ def aplayer(request):
 		if s:
 			se = s.strip()
 			search = se.title()
-			print(search)
+			if search == "":
+				messages.success(request,"Please Fill Search Box Then Seacrh")
 			user = request.user
 			a= Maudio.objects.filter( Q(title__icontains=search) | Q(name__icontains=search)& Q(ondelete=False)&Q(onhide=False))
 		
@@ -62,7 +63,7 @@ def aplayer(request):
 	audios = Maudio.objects.filter(onhide=False,ondelete = False)
 	if u.is_authenticated:
 		aform=Aform(request.POST,request.FILES)
-		
+	
 		aform.name =u.first_name+" "+u.last_name
 		aform.email =u.email
 		aform.user = request.user
@@ -219,8 +220,8 @@ def uprofile(request):
 def vdelete(request,sno):
 	u = request.user
 	v = Mvideo.objects.get(sno=sno)
-	v.ondelete = True
-	v.save()
+	v.delete()
+
 	return redirect ('uprofile')
 @csrf_exempt
 def vhide(request,sno):
@@ -241,8 +242,8 @@ def vunhide(request,sno):
 def adelete(request,sno):
 	u = request.user
 	a = Maudio.objects.get(sno=sno)
-	a.ondelete = True
-	a.save()
+	a.delete()
+
 	return redirect ('uprofile')
 @csrf_exempt
 def ahide(request,sno):
